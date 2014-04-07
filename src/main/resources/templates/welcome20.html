@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>Getting Started: Serving Web Content</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+</head>
+<body>
+<p th:text="'Hello, ' + ${name} + '!'" />
+
+<p>Loading the 'new' greeting using ajax... (setting the accept header v2.0)</p>
+<div id="new"></div>
+<script type="text/javascript">
+	$.ajax({
+		beforeSend: function (req) {
+			req.setRequestHeader("Accept", "application/json, application/vnd.com.bva-auctions.api+json;version=2.0");
+            req.setRequestHeader("Content-Type", "application/vnd.com.bva-auctions.api+json");
+		},
+		type: "GET",
+		url: "http://localhost:8080/greeting20",
+		success: function (data, text) {
+			$("div#new").append(data.content);
+		},
+		error: function (request, status, error) {
+			$("div#new").append("ERROR: " + error);
+		},
+		dataType: "json"
+	});
+</script>
+</body>
+</html>
