@@ -14,10 +14,10 @@
     $.ajax({
         beforeSend: function (req) {
             req.setRequestHeader("Accept", "application/vnd.com.bva-auctions.api+json;version=1.0");
-            req.setRequestHeader("Content-Type", "application/vnd.com.bva-auctions.api+json");
+            req.setRequestHeader("version", "1.0");
         },
         type: "GET",
-        url: "http://localhost:8080/greeting10",
+        url: "http://localhost:8080/greeting",
         success: function (data, text) {
             $("div#oldest").append(data.content);
         },

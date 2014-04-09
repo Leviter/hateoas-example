@@ -1,4 +1,4 @@
-package hello;
+package hello.domain.model;
 
 import lombok.Getter;
 import org.springframework.hateoas.ResourceSupport;

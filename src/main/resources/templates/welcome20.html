@@ -13,11 +13,12 @@
 <script type="text/javascript">
 	$.ajax({
 		beforeSend: function (req) {
-			req.setRequestHeader("Accept", "application/json, application/vnd.com.bva-auctions.api+json;version=2.0");
-            req.setRequestHeader("Content-Type", "application/vnd.com.bva-auctions.api+json");
+			req.setRequestHeader("Accept", "application/vnd.com.bva-auctions.api+json");
+			req.setRequestHeader("version", "2.0");
+            //req.setRequestHeader("Content-Type", "application/vnd.com.bva-auctions.api+json");
 		},
 		type: "GET",
-		url: "http://localhost:8080/greeting20",
+		url: "http://localhost:8080/greeting",
 		success: function (data, text) {
 			$("div#new").append(data.content);
 		},

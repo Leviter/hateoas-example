@@ -1,5 +1,6 @@
 package hello;
 
+import hello.domain.model.Greeting;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,7 +20,8 @@ public class GreetingController {
 
 //	@RequestMapping(method = RequestMethod.GET, produces = "application/vnd+com.bva-auctions.api+json;version=1.1", headers = "Accept:application/vnd+com.bva-auctions.api+json;version=1.1")
 //	@RequestMapping(value = "/greeting", method= RequestMethod.GET, headers = "Accept:application/vnd.com.bva-auctions.api+json;version=1.1", produces = {"application/vnd.com.bva-auctions.api+json;version=1.1"})
-	@RequestMapping(value = "/greeting11", method= RequestMethod.GET, consumes = "application/vnd.com.bva-auctions.api+json;version=1.1", produces = {"application/vnd.com.bva-auctions.api+json;version=1.1"})
+//	@RequestMapping(value = "/greeting11", method= RequestMethod.GET, consumes = "application/vnd.com.bva-auctions.api+json;version=1.1", produces = {"application/vnd.com.bva-auctions.api+json;version=1.1"})
+	@RequestMapping(value = "/greeting", method = RequestMethod.GET, produces = { "application/vnd.com.bva-auctions.api+json"}, headers = "version=1.1")
 	@ResponseBody
 	public HttpEntity<Greeting> greetingOld(
 			@RequestParam(value = "name", required = false, defaultValue = "World") String name) {
@@ -31,7 +33,7 @@ public class GreetingController {
 	}
 
 //	@RequestMapping(method = RequestMethod.GET, produces = "application/vnd+com.bva-auctions.api+json;version=1.0", headers = "Accept:application/vnd+com.bva-auctions.api+json;version=1.0")
-	@RequestMapping(value = "/greeting10", method= RequestMethod.GET, consumes = "application/vnd.com.bva-auctions.api+json;version=1.0", produces = {"application/vnd.com.bva-auctions.api+json;version=1.0"})
+	@RequestMapping(value = "/greeting", method= RequestMethod.GET, produces = { "application/vnd.com.bva-auctions.api+json"}, headers = "version=1.0" )
 	@ResponseBody
 	public HttpEntity<Greeting> greetingOldest(
 			@RequestParam(value = "name", required = false, defaultValue = "Ancient World") String name) {
@@ -42,7 +44,7 @@ public class GreetingController {
 		return new ResponseEntity<Greeting>(greeting, HttpStatus.OK);
 	}
 
-	@RequestMapping(value = "/greeting20", method= RequestMethod.GET, consumes = "application/vnd.com.bva-auctions.api+json;version=2.0", produces = {"application/vnd.com.bva-auctions.api+json;version=2.0"})
+	@RequestMapping(value = "/greeting", method= RequestMethod.GET, produces = { "application/vnd.com.bva-auctions.api+json"}, headers = "version=2.0" )
 	@ResponseBody
 	public HttpEntity<Greeting> greeting(
 			@RequestParam(value = "name", required = false, defaultValue = "Cruel World") String name) {
