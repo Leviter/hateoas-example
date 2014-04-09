@@ -8,6 +8,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class WelcomeController {
 
+	@RequestMapping("/welcome")
+	public String greeting(
+			@RequestParam(value = "name", required = false, defaultValue = "Controller") String name, Model model) {
+		model.addAttribute("name", name);
+		return "welcome";
+	}
+
 	@RequestMapping("/welcome10")
 	public String greeting10(
 			@RequestParam(value = "name", required = false, defaultValue = "Controller") String name, Model model) {
@@ -23,7 +30,7 @@ public class WelcomeController {
 	}
 
 	@RequestMapping("/welcome20")
-	public String greeting(
+	public String greeting20(
 			@RequestParam(value = "name", required = false, defaultValue = "Controller") String name, Model model) {
 		model.addAttribute("name", name);
 		return "welcome20";

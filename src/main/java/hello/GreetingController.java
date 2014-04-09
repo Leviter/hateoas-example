@@ -54,4 +54,15 @@ public class GreetingController {
 
 		return new ResponseEntity<Greeting>(greeting, HttpStatus.OK);
 	}
+
+	@RequestMapping(value = "/greeting", method= RequestMethod.GET, produces = { "application/vnd.com.bva-auctions.api+json"})
+	@ResponseBody
+	public HttpEntity<Greeting> greetingGeneric(
+			@RequestParam(value = "name", required = false, defaultValue = "Galaxy") String name) {
+
+		Greeting greeting = new Greeting(String.format(TEMPLATE, name));
+		greeting.add(linkTo(methodOn(GreetingController.class).greeting(name)).withSelfRel());
+
+		return new ResponseEntity<Greeting>(greeting, HttpStatus.OK);
+	}
 }
